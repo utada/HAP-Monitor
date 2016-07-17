@@ -44,7 +44,7 @@ def monitor_haproxy(socket_name):
         s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         s.connect(socket_name)
         s.send('show stat\n')
-        raw_stat = s.recv(8192)
+        raw_stat = s.recv(81920)
         s.close()
     except Exception as e:
         logger.error('Failed requesting data from socket %s with execption %s' % (socket_name, e))
